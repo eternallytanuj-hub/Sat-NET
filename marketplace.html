@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Sat-NET | Real-Time Orbital Bandwidth & Spectrum Marketplace</title>
+    <meta name="description" content="Lease and trade satellite bandwidth, communication spectrum, and computational routing slots in real-time via decentralized smart contracts." />
+    
+    <!-- Google Fonts Imports -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Theme Configuration -->
+    <meta name="color-scheme" content="dark">
+    <script>
+      {
+        document.documentElement.classList.add('dark-theme');
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Space background particles & orbit overlays -->
+    <div class="space-bg">
+      <div class="space-stars"></div>
+      <div class="space-grid"></div>
+      <div class="orbit-container">
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-3"></div>
+      </div>
+    </div>
+
+    <div id="app">
+      <!-- Global Nav Header -->
+      <header id="site-header">
+        <div class="nav-container">
+          <a href="/" class="logo-group" id="nav-logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Sat-NET</span>
+          </a>
+          <nav class="nav-links" aria-label="Main Navigation">
+            <a href="/marketplace.html" class="nav-link-item active-nav-link">Marketplace</a>
+            <a href="/#zero-trust" class="nav-link-item">Zero-Trust Link</a>
+            <a href="/#ledger" class="nav-link-item">Black Box Ledger</a>
+            <a href="/#docs" class="nav-link-item">Documentation</a>
+          </nav>
+          <div class="nav-actions">
+            <a href="/" class="nav-btn-console" id="nav-btn-launch-header">Back to Home</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Layout -->
+      <main id="main-content" class="marketplace-main">
+        
+        <!-- Marketplace Intro -->
+        <section class="marketplace-intro">
+          <div class="eyebrow-badge" id="intro-badge">
+            <span class="badge-pulse"></span>
+            <span class="badge-text">Decentralized Bandwidth Exchange</span>
+          </div>
+          <h1 class="marketplace-title">Real-Time Space <span class="gradient-text">Exchange.</span></h1>
+          <p class="marketplace-desc">Trade communication spectrum, lease orbital bandwidth, and procure priority packet routing slots instantly. Fully governed by automated zero-trust escrow agreements.</p>
+        </section>
+
+        <!-- A. Global Network Analytics Header -->
+        <section class="analytics-section" aria-label="Network Performance Metrics">
+          <div class="analytics-grid">
+            
+            <!-- Metric 1: Total Available Bandwidth -->
+            <div class="metric-card card-glowing" id="metric-bandwidth">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="metric-label">TOTAL AVAIL NETWORK BANDWIDTH</span>
+              <div class="metric-display">
+                <span class="metric-number" id="stats-total-bandwidth">4.20</span>
+                <span class="metric-unit">Pbps</span>
+              </div>
+              <div class="metric-subtext">Capacity online across 247 satellite groups</div>
+            </div>
+
+            <!-- Metric 2: Active Cross-Agency Leases -->
+            <div class="metric-card card-glowing" id="metric-leases">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="metric-label">ACTIVE CROSS-AGENCY LEASES</span>
+              <div class="metric-display">
+                <span class="metric-number" id="stats-active-leases">1,248</span>
+                <span class="metric-unit" style="font-size: 1.2rem; color: var(--color-accent-emerald);">LINKS</span>
+              </div>
+              <div class="metric-subtext">Secure ground-to-space interconnections</div>
+            </div>
+
+            <!-- Metric 3: Global Network Utilization -->
+            <div class="metric-card card-glowing" id="metric-utilization">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="metric-label">GLOBAL NETWORK UTILIZATION</span>
+              <div class="metric-display">
+                <span class="metric-number" id="stats-network-utilization">68.4</span>
+                <span class="metric-unit">%</span>
+                <!-- Sparkline SVG -->
+                <div class="sparkline-container">
+                  <svg class="sparkline-svg" viewBox="0 0 100 30" width="80" height="24">
+                    <path d="M 0 20 Q 10 12 20 22 T 40 10 T 60 18 T 80 5 T 100 15" fill="none" stroke="var(--color-accent-indigo)" stroke-width="2" />
+                    <circle cx="100" cy="15" r="3" fill="var(--color-accent-indigo)" />
+                  </svg>
+                </div>
+              </div>
+              <div class="metric-subtext">+1.2% delta spike in last orbital epoch</div>
+            </div>
+
+            <!-- Metric 4: Average Settlement Time -->
+            <div class="metric-card card-glowing" id="metric-settlement">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="metric-label">AVERAGE SETTLEMENT TIME</span>
+              <div class="metric-display">
+                <span class="metric-number">1.82</span>
+                <span class="metric-unit">sec</span>
+              </div>
+              <div class="metric-subtext">Decentralized ledger consensus block time</div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- B. Filter & Discovery Controls -->
+        <section class="filters-section" aria-label="Listing Filters">
+          <div class="filters-toolbar">
+            
+            <!-- Search input -->
+            <div class="search-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="search-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z" />
+              </svg>
+              <input type="text" id="marketplace-search-input" placeholder="Search by Node, Satellite, or Coordinate..." aria-label="Search listings" autocomplete="off" />
+            </div>
+
+            <!-- Filter Dropdowns -->
+            <div class="dropdowns-wrapper">
+              <div class="custom-select-wrapper">
+                <select id="filter-orbit" aria-label="Filter by Orbit Type">
+                  <option value="ALL">All Orbits</option>
+                  <option value="LEO">LEO (Low Earth Orbit)</option>
+                  <option value="MEO">MEO (Medium Earth Orbit)</option>
+                  <option value="GEO">GEO (Geostationary Orbit)</option>
+                  <option value="DEEP_SPACE">Deep Space Orbit</option>
+                </select>
+              </div>
+
+              <div class="custom-select-wrapper">
+                <select id="filter-band" aria-label="Filter by Frequency Band">
+                  <option value="ALL">All Bands</option>
+                  <option value="X_BAND">X-Band (8-12 GHz)</option>
+                  <option value="KU_BAND">Ku-Band (12-18 GHz)</option>
+                  <option value="KA_BAND">Ka-Band (26-40 GHz)</option>
+                </select>
+              </div>
+
+              <div class="custom-select-wrapper">
+                <select id="filter-los" aria-label="Filter by Availability Window">
+                  <option value="ALL">All Availability</option>
+                  <option value="IMMEDIATE">Live Now (LOS > 5m)</option>
+                  <option value="SHORT">Next 30 Minutes</option>
+                  <option value="LONG">Extended Pass (> 10m)</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- C. Live Resource Listings Grid -->
+        <section class="listings-section" aria-label="Live Satellites Up For Lease">
+          <div class="listings-header">
+            <h2 class="section-title">Available Orbital Resources (<span id="listings-count">0</span>)</h2>
+            <div class="listings-pulse-indicator">
+              <span class="status-pulse-cyan"></span>
+              <span class="pulse-text-ledger">Ledger Orderbook Live Syncing</span>
+            </div>
+          </div>
+          
+          <!-- Listings Grid -->
+          <div class="listings-grid" id="listings-grid-container">
+            <!-- Dynamic listing cards will be populated here via JavaScript -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="listings-empty-state" id="listings-empty" style="display: none;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="empty-icon">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+            </svg>
+            <h3 class="empty-title">No Orbital Resources Found</h3>
+            <p class="empty-desc">No satellites matching your search parameters are currently broad-casting availability. Try relaxing your filters.</p>
+          </div>
+        </section>
+
+        <!-- D. Active Operations & Handshake Panel -->
+        <section class="active-leases-section" aria-label="Active Leases Monitor">
+          <div class="active-leases-header">
+            <div class="header-title-group">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="active-leases-icon">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.61 2.22a14.98 14.98 0 0 0-6.16 12.12A14.98 14.98 0 0 0 15.59 14.37Zm0 0L8.02 22M12 11.25a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z" />
+              </svg>
+              <h2 class="active-leases-title">Active Mission Channels & Operations</h2>
+            </div>
+            <div class="active-count-badge"><span id="active-lease-count">0</span> Links Secured</div>
+          </div>
+          
+          <div class="active-leases-table-wrapper">
+            <table class="active-leases-table">
+              <thead>
+                <tr>
+                  <th scope="col">TARGET NODE</th>
+                  <th scope="col">FREQUENCY BAND</th>
+                  <th scope="col">ORBIT TYPE</th>
+                  <th scope="col">TIME REMAINING</th>
+                  <th scope="col">SMART CONTRACT ESCROW HASH</th>
+                  <th scope="col">HANDSHAKE STATUS</th>
+                </tr>
+              </thead>
+              <tbody id="active-leases-tbody">
+                <!-- Dynamically generated rows will go here -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Global Footer -->
+      <footer id="site-footer">
+        <div class="footer-container">
+          <span class="footer-text">© 2026 Sat-NET Marketplace. Real-time bandwidth settlement verified via smart contract nodes.</span>
+          <div class="footer-status">
+            <span class="footer-status-dot"></span>
+            <span class="footer-status-text">LEDGER STATE: SYNCED (EPOCH_1084)</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Marketplace Controller -->
+    <script type="module" src="/src/marketplace.js"></script>
+  </body>
+</html>

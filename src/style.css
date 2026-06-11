@@ -907,3 +907,730 @@ html {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   Sat-NET Marketplace Specific Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   M1. Layout & Header
+   -------------------------------------------------------------------------- */
+.marketplace-main {
+  width: 100%;
+  padding-top: 3.5rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.marketplace-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.marketplace-title {
+  font-family: var(--font-title);
+  font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.marketplace-desc {
+  color: var(--color-text-secondary);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   M2. Analytics Cards Grid
+   -------------------------------------------------------------------------- */
+.analytics-section {
+  width: 100%;
+}
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric-card {
+  position: relative;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-card:hover {
+  border-color: var(--color-card-border-hover);
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  letter-spacing: 1.25px;
+}
+
+.metric-display {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  position: relative;
+}
+
+.metric-number {
+  font-family: var(--font-numeric);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.metric-unit {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.metric-subtext {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Micro Sparkline Visualization */
+.sparkline-container {
+  margin-left: auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.sparkline-svg {
+  filter: drop-shadow(0 0 4px rgba(99, 102, 241, 0.4));
+}
+
+/* --------------------------------------------------------------------------
+   M3. Filter & Discovery Toolbar
+   -------------------------------------------------------------------------- */
+.filters-section {
+  width: 100%;
+}
+
+.filters-toolbar {
+  display: flex;
+  background: rgba(8, 9, 16, 0.35);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  gap: 1.5rem;
+  align-items: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@media (max-width: 960px) {
+  .filters-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+}
+
+/* Search Input wrapper */
+.search-wrapper {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 1rem;
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+#marketplace-search-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+#marketplace-search-input:focus {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
+}
+
+/* Dropdown Filters wrapper */
+.dropdowns-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .dropdowns-wrapper {
+    flex-direction: column;
+  }
+}
+
+/* Custom Styled Dropdown selects */
+.custom-select-wrapper {
+  position: relative;
+  min-width: 180px;
+}
+
+.custom-select-wrapper::after {
+  content: '';
+  position: absolute;
+  right: 1.15rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 5px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor' stroke-width='2.5'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: transform 0.2s ease;
+}
+
+.custom-select-wrapper select {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 0.75rem 2.5rem 0.75rem 1.15rem;
+  color: var(--color-text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: all 0.3s ease;
+}
+
+.custom-select-wrapper select:focus {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(99, 102, 241, 0.5);
+  color: var(--color-text-primary);
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.1);
+}
+
+.custom-select-wrapper select option {
+  background-color: var(--color-bg-space);
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   M4. Satellite Listings Grid
+   -------------------------------------------------------------------------- */
+.listings-section {
+  width: 100%;
+}
+
+.listings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.section-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+.listings-pulse-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.status-pulse-cyan {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-accent-cyan);
+  animation: pulse-dot-cyan 1.5s infinite alternate;
+}
+
+@keyframes pulse-dot-cyan {
+  from { opacity: 0.35; box-shadow: 0 0 2px var(--color-accent-cyan); }
+  to { opacity: 1; box-shadow: 0 0 10px var(--color-accent-cyan); }
+}
+
+.pulse-text-ledger {
+  letter-spacing: 0.5px;
+}
+
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Listing Card Core Styles */
+.listing-card {
+  position: relative;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.listing-card:hover {
+  border-color: var(--color-card-border-hover);
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255,255,255,0.05);
+}
+
+.listing-card:hover .card-glow-element {
+  opacity: 1;
+}
+
+/* Card Header elements */
+.listing-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 0.85rem;
+  z-index: 2;
+}
+
+.asset-title-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.asset-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.asset-type {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Styled Orbit Badges */
+.asset-badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.orbit-leo { background: rgba(99, 102, 241, 0.08); color: var(--color-accent-indigo); border: 1px solid rgba(99, 102, 241, 0.2); }
+.orbit-meo { background: rgba(167, 139, 250, 0.08); color: #a78bfa; border: 1px solid rgba(167, 139, 250, 0.2); }
+.orbit-geo { background: rgba(6, 182, 212, 0.08); color: var(--color-accent-cyan); border: 1px solid rgba(6, 182, 212, 0.2); }
+.orbit-deep_space { background: rgba(16, 185, 129, 0.08); color: var(--color-accent-emerald); border: 1px solid rgba(16, 185, 129, 0.2); }
+
+/* Card Body elements */
+.listing-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  z-index: 2;
+}
+
+.metrics-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+}
+
+.metrics-grid-inline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 6px;
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.metrics-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.metric-label-inline {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.metric-val-inline {
+  font-size: 0.82rem;
+  color: var(--color-text-primary);
+}
+
+.font-bold {
+  font-weight: 500;
+}
+
+.los-status {
+  padding-top: 0.25rem;
+}
+
+/* Helpers for inline metric warnings */
+.text-amber { color: #f59e0b; }
+.text-emerald { color: var(--color-accent-emerald); }
+
+/* Card Footer elements */
+.listing-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 1.15rem;
+  z-index: 2;
+}
+
+.price-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.price-value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.2rem;
+}
+
+.price-amt {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.price-denom {
+  font-size: 0.68rem;
+  color: var(--color-text-secondary);
+}
+
+/* Button instant lease action */
+.btn-lease-action {
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.65rem 1.15rem;
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-space);
+  border: 1px solid var(--color-text-primary);
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-lease-arrow {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.3s ease;
+}
+
+.btn-lease-action:hover {
+  background-color: var(--color-accent-emerald);
+  border-color: var(--color-accent-emerald);
+  color: var(--color-text-primary);
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+.btn-lease-action:hover .btn-lease-arrow {
+  transform: translateX(3px);
+}
+
+.btn-lease-action:active {
+  transform: translateY(1px);
+}
+
+/* Leasing loading visual states */
+.leasing-in-progress {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.05);
+}
+
+.leasing-in-progress .btn-lease-action {
+  background-color: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(16, 185, 129, 0.25) !important;
+  color: var(--color-accent-emerald) !important;
+  cursor: not-allowed;
+  animation: button-pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes button-pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.leasing-in-progress .btn-lease-arrow {
+  display: none;
+}
+
+/* Empty State Styles */
+.listings-empty-state {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4.5rem 2rem;
+  background: var(--color-card-bg);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  gap: 0.75rem;
+}
+
+.empty-icon {
+  width: 44px;
+  height: 44px;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.empty-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.empty-desc {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  max-width: 420px;
+}
+
+/* --------------------------------------------------------------------------
+   M5. Active Operations Table Panel
+   -------------------------------------------------------------------------- */
+.active-leases-section {
+  width: 100%;
+  background: rgba(6, 7, 12, 0.45);
+  border: 1px solid var(--color-card-border);
+  border-radius: 16px;
+  padding: 2.25rem 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.active-leases-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.active-leases-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--color-accent-indigo);
+}
+
+.active-leases-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.active-count-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--color-accent-emerald);
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 4px;
+  padding: 0.25rem 0.75rem;
+}
+
+/* Responsive Table Wrapper */
+.active-leases-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.active-leases-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.active-leases-table th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.75px;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: normal;
+}
+
+.active-leases-table td {
+  padding: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--color-text-secondary);
+}
+
+.active-lease-row {
+  transition: background 0.2s ease;
+}
+
+.active-lease-row:hover {
+  background: rgba(255, 255, 255, 0.012);
+  color: var(--color-text-primary);
+}
+
+.node-cell {
+  color: var(--color-text-primary);
+}
+
+.table-orbit-badge {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.no-active-leases {
+  text-align: center;
+  padding: 3.5rem 1rem !important;
+  color: var(--color-text-muted) !important;
+  font-size: 0.9rem;
+}
+
+/* Hash Column & Copy Button */
+.hash-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-copy-hash {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  padding: 0.2rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.btn-copy-hash:hover {
+  color: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.copy-icon, .copy-success-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Table Link Status Badge */
+.status-badge-connected {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-accent-emerald);
+}
+
+.active-nav-link {
+  color: var(--color-text-primary) !important;
+  border-bottom: 2px solid var(--color-accent-indigo);
+  padding-bottom: 0.25rem;
+}
+
