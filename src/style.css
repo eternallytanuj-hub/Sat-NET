@@ -1634,3 +1634,550 @@ html {
   padding-bottom: 0.25rem;
 }
 
+/* ==========================================================================
+   Sat-NET Mission Control Console Specific Styles
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   C1. Layout & Workspace Grid
+   -------------------------------------------------------------------------- */
+.console-main {
+  width: 100%;
+  padding-top: 3.5rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mission-status-section {
+  width: 100%;
+}
+
+.mission-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .mission-status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.status-metric-card {
+  position: relative;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.status-metric-card:hover {
+  border-color: var(--color-card-border-hover);
+  background: rgba(255, 255, 255, 0.025);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.status-metric-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 1.25px;
+}
+
+.status-metric-val {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.status-metric-text {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.status-metric-unit {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.status-metric-sub {
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+/* Glowing Indicator Lights */
+.status-indicator-pulse {
+  width: 9px;
+  height: 9px;
+  background-color: var(--color-accent-emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--color-accent-emerald);
+  animation: pulse-dot-green 1.5s infinite alternate;
+}
+
+.pulse-amber {
+  background-color: #fbbf24 !important;
+  box-shadow: 0 0 8px #fbbf24 !important;
+  animation: pulse-dot-amber-glow 1.5s infinite alternate !important;
+}
+
+.pulse-red {
+  background-color: #ef4444 !important;
+  box-shadow: 0 0 8px #ef4444 !important;
+  animation: pulse-dot-red-glow 1.5s infinite alternate !important;
+}
+
+@keyframes pulse-dot-green {
+  from { opacity: 0.45; box-shadow: 0 0 2px var(--color-accent-emerald); }
+  to { opacity: 1; box-shadow: 0 0 12px var(--color-accent-emerald); }
+}
+
+@keyframes pulse-dot-amber-glow {
+  from { opacity: 0.45; box-shadow: 0 0 2px #fbbf24; }
+  to { opacity: 1; box-shadow: 0 0 12px #fbbf24; }
+}
+
+@keyframes pulse-dot-red-glow {
+  from { opacity: 0.45; box-shadow: 0 0 2px #ef4444; }
+  to { opacity: 1; box-shadow: 0 0 12px #ef4444; }
+}
+
+/* Split workspace layout */
+.console-workspace {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .console-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.workspace-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow: hidden;
+}
+
+.workspace-sidebar-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Card titles */
+.workspace-card-title {
+  font-family: var(--font-title);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.25px;
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   C2. Secure Communication Visualizer (Canvas & Float Card)
+   -------------------------------------------------------------------------- */
+.visualizer-card {
+  position: relative;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 16px;
+  padding: 1.75rem 2rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.visualizer-title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 1.15rem;
+  margin-bottom: 1rem;
+  z-index: 2;
+  position: relative;
+}
+
+.connection-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.25rem 0.75rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 4px;
+  color: var(--color-accent-emerald);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: all 0.3s ease;
+}
+
+.badge-warning {
+  background: rgba(245, 158, 11, 0.05) !important;
+  border-color: rgba(245, 158, 11, 0.2) !important;
+  color: #fbbf24 !important;
+}
+
+.badge-danger {
+  background: rgba(239, 68, 68, 0.05) !important;
+  border-color: rgba(239, 68, 68, 0.2) !important;
+  color: #ef4444 !important;
+}
+
+.status-pulse-amber {
+  width: 6px;
+  height: 6px;
+  background-color: #fbbf24;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #fbbf24;
+  animation: pulse-dot-amber-glow 1.5s infinite alternate;
+}
+
+.status-pulse-red {
+  width: 6px;
+  height: 6px;
+  background-color: #ef4444;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ef4444;
+  animation: pulse-dot-red-glow 1.5s infinite alternate;
+}
+
+.canvas-visualizer-wrapper {
+  position: relative;
+  width: 100%;
+  height: 340px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+#visualizer-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Floating Real-Time Handshake Status Card (Glassmorphic) */
+.handshake-overlay-card {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: rgba(7, 8, 15, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 1rem 1.15rem;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+.overlay-metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+}
+
+.overlay-metric-lbl {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.overlay-metric-val {
+  color: var(--color-text-primary);
+}
+
+.overlay-status-footer {
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.65rem;
+  text-align: center;
+  color: var(--color-text-primary);
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+/* --------------------------------------------------------------------------
+   C3. Telemetry Event Ledger Panel
+   -------------------------------------------------------------------------- */
+.ledger-explorer-card {
+  background: rgba(6, 7, 12, 0.45);
+  border: 1px solid var(--color-card-border);
+  border-radius: 16px;
+  padding: 2.25rem 2.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.ledger-header-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+}
+
+.ledger-sync-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+}
+
+.sync-text {
+  letter-spacing: 0.5px;
+}
+
+.ledger-table-wrapper {
+  width: 100%;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.ledger-stream-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.88rem;
+}
+
+.ledger-stream-table th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.75px;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-weight: normal;
+}
+
+.ledger-stream-table td {
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  color: var(--color-text-secondary);
+}
+
+.ledger-row {
+  transition: all 0.2s ease;
+}
+
+.ledger-row:hover {
+  background: rgba(255, 255, 255, 0.01);
+  color: var(--color-text-primary);
+}
+
+.payload-cell {
+  color: var(--color-text-primary);
+  font-size: 0.78rem;
+}
+
+.text-cyan { color: var(--color-accent-cyan); }
+.text-red { color: #ef4444; }
+
+/* Cryptographic scroll fade-in row animation */
+.new-row-animate {
+  animation: row-fade-slide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  background: rgba(6, 182, 212, 0.03);
+}
+
+@keyframes row-fade-slide {
+  from { transform: translateY(-5px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --------------------------------------------------------------------------
+   C4. Simulation Controls & Operations Logs
+   -------------------------------------------------------------------------- */
+.sidebar-panel {
+  position: relative;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: 12px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.sidebar-panel-title {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.sidebar-panel-desc {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+
+.simulation-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.btn-simulation-trigger {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--color-text-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  text-align: center;
+}
+
+.btn-solar:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.03);
+}
+
+.btn-cyber:hover {
+  border-color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.25);
+  background: rgba(239, 68, 68, 0.03);
+}
+
+.btn-simulation-trigger:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Active Warning button states */
+.btn-active-amber {
+  border-color: #fbbf24 !important;
+  background: rgba(251, 191, 36, 0.1) !important;
+  color: #fbbf24 !important;
+}
+
+/* Rolling terminal console feed */
+.terminal-panel {
+  background: rgba(0, 0, 0, 0.45) !important;
+  flex: 1;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-logs-wrapper {
+  flex: 1;
+  position: relative;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0.85rem;
+}
+
+.terminal-logs-feed {
+  width: 100%;
+  height: 240px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar visually but keep scroll */
+.terminal-logs-feed::-webkit-scrollbar {
+  display: none;
+}
+.terminal-logs-feed {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.terminal-log-item {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.log-time {
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.log-msg {
+  color: var(--color-text-secondary);
+  word-break: break-word;
+}
+
+.log-warning .log-msg {
+  color: #fbbf24;
+}
+
+.log-success .log-msg {
+  color: var(--color-accent-emerald);
+}
+
+.terminal-footer {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 0.75rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+.console-active {
+  color: var(--color-text-primary) !important;
+  border-color: var(--color-text-primary) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05) !important;
+}
+
+

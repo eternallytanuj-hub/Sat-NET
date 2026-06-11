@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Sat-NET | Mission Control & Cryptographic Telemetry Console</title>
+    <meta name="description" content="Live Command Center for active space missions. Verify zero-trust ground-to-space links and audit the immutable cryptographic telemetry ledger." />
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <meta name="color-scheme" content="dark">
+    <script>
+      {
+        document.documentElement.classList.add('dark-theme');
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Deep Space Background Grid & Orbits -->
+    <div class="space-bg">
+      <div class="space-stars"></div>
+      <div class="space-grid"></div>
+      <div class="orbit-container">
+        <div class="orbit-ring orbit-ring-1"></div>
+        <div class="orbit-ring orbit-ring-2"></div>
+        <div class="orbit-ring orbit-ring-3"></div>
+      </div>
+    </div>
+
+    <div id="app">
+      <!-- Global Nav Header -->
+      <header id="site-header">
+        <div class="nav-container">
+          <a href="/" class="logo-group" id="nav-logo">
+            <div class="logo-icon"></div>
+            <span class="logo-text">Sat-NET</span>
+          </a>
+          <nav class="nav-links" aria-label="Main Navigation">
+            <a href="/marketplace.html" class="nav-link-item">Marketplace</a>
+            <a href="/#zero-trust" class="nav-link-item">Zero-Trust Link</a>
+            <a href="/#ledger" class="nav-link-item">Black Box Ledger</a>
+            <a href="/#docs" class="nav-link-item">Documentation</a>
+          </nav>
+          <div class="nav-actions">
+            <a href="/console.html" class="nav-btn-console console-active">Mission Control</a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Layout -->
+      <main id="main-content" class="console-main">
+        
+        <!-- A. Global Mission Status Header -->
+        <section class="mission-status-section" aria-label="Global Mission Status">
+          <div class="mission-status-grid">
+            
+            <!-- Metric 1: Active Mission -->
+            <div class="status-metric-card card-glowing">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="status-metric-label">ACTIVE SPACE MISSION</span>
+              <div class="status-metric-val">
+                <span class="status-indicator-pulse" id="mission-status-dot"></span>
+                <span class="status-metric-text" id="mission-status-name">Artemis-IV Relay</span>
+              </div>
+              <div class="status-metric-sub">Epoch 1084 // LEO Trajectory</div>
+            </div>
+
+            <!-- Metric 2: Verified Orbital Assets -->
+            <div class="status-metric-card card-glowing">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="status-metric-label">VERIFIED ORBITAL NODES</span>
+              <div class="status-metric-val">
+                <span class="status-metric-text font-numeric">3</span>
+                <span class="status-metric-unit">Active</span>
+              </div>
+              <div class="status-metric-sub">Astra-LEO-09, Chronos-MEO-04, Ground Station Alpha</div>
+            </div>
+
+            <!-- Metric 3: Protocol Compliance Score -->
+            <div class="status-metric-card card-glowing">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <span class="status-metric-label">PROTOCOL COMPLIANCE SCORE</span>
+              <div class="status-metric-val">
+                <span class="status-metric-text text-emerald font-numeric" id="compliance-text">100% SECURE</span>
+              </div>
+              <div class="status-metric-sub">Zero-Trust Ground-to-Space cipher verified</div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- Split Workspace: Visualizer & Ledger vs Anomaly Sidebar -->
+        <div class="console-workspace">
+          
+          <!-- Left Main Column (Visualizer + Telemetry Ledger) -->
+          <div class="workspace-main-col">
+            
+            <!-- B. Secure Communication Visualizer -->
+            <section class="visualizer-card card-glowing" aria-label="Communication Link Visualizer">
+              <div class="card-glow-element bg-emerald-glow" id="visualizer-glow"></div>
+              <div class="visualizer-title-bar">
+                <h2 class="workspace-card-title">Secure Ground-to-Orbit Link Visualizer</h2>
+                <span class="connection-status-pill" id="link-status-badge">
+                  <span class="status-pulse-green" id="link-pulse-light"></span>
+                  <span id="link-status-text">ZERO-TRUST LINK ACTIVE</span>
+                </span>
+              </div>
+
+              <!-- Animated Trajectory Canvas Container -->
+              <div class="canvas-visualizer-wrapper">
+                <canvas id="visualizer-canvas"></canvas>
+                
+                <!-- Floating Real-Time Handshake Status Card (Glassmorphic) -->
+                <div class="handshake-overlay-card">
+                  <div class="overlay-metric-row">
+                    <span class="overlay-metric-lbl">ROUND-TRIP PING:</span>
+                    <span class="overlay-metric-val font-mono" id="overlay-ping-val">45.2ms</span>
+                  </div>
+                  <div class="overlay-metric-row">
+                    <span class="overlay-metric-lbl">DOPPLER COMP:</span>
+                    <span class="overlay-metric-val text-emerald font-mono" id="overlay-doppler-val">ACTIVE</span>
+                  </div>
+                  <div class="overlay-status-footer font-mono" id="overlay-encryption-val">
+                    ZERO-TRUST AUTH: ENCRYPTED
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <!-- C. Black Box Explorer / Telemetry Ledger Stream -->
+            <section class="ledger-explorer-card" aria-label="Black Box Telemetry Ledger">
+              <div class="ledger-header-bar">
+                <h2 class="workspace-card-title">Immutable Cryptographic Black Box Telemetry Ledger</h2>
+                <div class="ledger-sync-badge">
+                  <span class="status-pulse-cyan"></span>
+                  <span class="sync-text font-mono">BLOCK_CHAIN: NOMINAL (SYNCED)</span>
+                </div>
+              </div>
+
+              <div class="ledger-table-wrapper">
+                <table class="ledger-stream-table">
+                  <thead>
+                    <tr>
+                      <th scope="col" style="width: 15%">BLOCK HEIGHT</th>
+                      <th scope="col" style="width: 20%">BLOCK HASH</th>
+                      <th scope="col" style="width: 18%">TIMESTAMP (UTC)</th>
+                      <th scope="col" style="width: 47%">TELEMETRY JSON PAYLOAD</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ledger-stream-tbody">
+                    <!-- Dynamic cryptographic blocks prepended here via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+          </div>
+
+          <!-- Right Sidebar Column (Simulation controls + logs terminal) -->
+          <div class="workspace-sidebar-col">
+            
+            <!-- D1. Simulation Control Panel -->
+            <section class="sidebar-panel card-glowing" aria-label="Simulation Controls">
+              <div class="card-glow-element bg-indigo-glow"></div>
+              <h2 class="sidebar-panel-title">Mission Anomaly Simulator</h2>
+              <p class="sidebar-panel-desc">Test protocol resilience by injecting artificial space environment anomalies or ground-station security threats.</p>
+              
+              <div class="simulation-actions-group">
+                <button class="btn-simulation-trigger btn-solar" id="btn-trigger-solar">
+                  <span class="btn-text">Trigger Solar Anomaly</span>
+                  <span class="btn-glow-amber"></span>
+                </button>
+                <button class="btn-simulation-trigger btn-cyber" id="btn-trigger-cyber">
+                  <span class="btn-text">Simulate Cyber Threat</span>
+                  <span class="btn-glow-amber"></span>
+                </button>
+              </div>
+            </section>
+
+            <!-- D2. System Logs Console Terminal -->
+            <section class="sidebar-panel terminal-panel" aria-label="System Logs Console">
+              <h2 class="sidebar-panel-title">Operations Console Terminal</h2>
+              <div class="terminal-logs-wrapper">
+                <div class="terminal-logs-feed" id="terminal-logs-container">
+                  <!-- Rolling operational messages logged here -->
+                </div>
+              </div>
+              <div class="terminal-footer font-mono">
+                SYSTEM_MODE: AUTO_RECOVERY // STANDBY
+              </div>
+            </section>
+
+          </div>
+
+        </div>
+      </main>
+
+      <!-- Global Footer -->
+      <footer id="site-footer">
+        <div class="footer-container">
+          <span class="footer-text">© 2026 Sat-NET Command. Mission telemetry blocks are immutable, secure, and cryptographically verified.</span>
+          <div class="footer-status">
+            <span class="footer-status-dot"></span>
+            <span class="footer-status-text">COMMAND STATUS: VERIFIED</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Console Controller Script -->
+    <script type="module" src="/src/console.js"></script>
+  </body>
+</html>

@@ -7,6 +7,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         marketplace: resolve(__dirname, 'marketplace.html'),
+        console: resolve(__dirname, 'console.html'),
       },
     },
   },
